@@ -28,14 +28,6 @@ class KuisController extends Controller
         return redirect()->route('kuis.index')->with('success','Data Berhasil Di tambahkan');
     }
 
-
-    public function show()
-    {
-        $kuis = Kuis::all();
-        $jawaban = Jawaban::select('user_id', 'skor')->get()->groupBy('user_id');
-        return view('user.kuis.index', compact('kuis','jawaban'));
-    }
-
     public function update(Request $request, $id)
     {
         $request->validate([
