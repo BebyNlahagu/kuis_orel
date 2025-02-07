@@ -28,6 +28,7 @@ class KuisController extends Controller
         return redirect()->route('kuis.index')->with('success','Data Berhasil Di tambahkan');
     }
 
+
     public function update(Request $request, $id)
     {
         $request->validate([

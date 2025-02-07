@@ -20,8 +20,8 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        $this->call(SoalSeeder::class);
         $this->call(KuisSeeder::class);
+        $this->call(SoalSeeder::class);
     }
 
 }

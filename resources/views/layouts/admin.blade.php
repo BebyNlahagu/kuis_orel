@@ -123,9 +123,9 @@
             <!-- HEADER DESKTOP-->
             <header class="header-desktop">
                 <div class="section__content section__content--p30">
-                    <div class="container-fluid">
+                    <div class="container-fluid py-3">
                         <div class="header-wrap">
-                            <form class="form-header" action="" method="POST">
+                            <form class="form-header" action="" method="POST" enctype="multipart/form-data">
                                 <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
                                 <button class="au-btn--submit" type="submit">
                                     <i class="zmdi zmdi-search"></i>
@@ -159,14 +159,16 @@
                                                     <a href="#"><i class="zmdi zmdi-account"></i>Account</a>
                                                 </div>
                                             </div>
-                                            <div class="account-dropdown__footer">
-                                                <div class="account-dropdown__footer">
-                                                    <form action="{{ route('logout') }}" method="POST">
-                                                        @csrf
-                                                        <button type="submit"><i class="zmdi zmdi-power"></i>Logout</button>
-                                                    </form>
+                                            <div class="account-dropdown__body">
+                                                <div class="account-dropdown__item">
+                                                    <a href="{{ route('logout') }}"onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                                        <i class="zmdi zmdi-power"></i>Logout
+                                                    </a>
                                                 </div>
                                             </div>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                @csrf
+                                            </form>
                                         </div>
                                     </div>
                                 </div>

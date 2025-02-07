@@ -27,17 +27,16 @@
         <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
             <div class="modal-content">
                 <div class="modal-body">
-
-                    @foreach ($jawaban as $items)
-                        <div class="user-skor" data-skor="{{ $items->sum('skor') }}">
-                            @if ($items->count() > 0)
-                                <p> Skor Kau: <span class="skor-value">{{ $items->sum('skor') }}</span></p>
-                            @else
-                                <p> Anda belum mengerjakan soal. </p>
-                            @endif
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h2>Skor</h2>
+                                <div class="mt-3">
+                                    <strong>Jumlah Nilai Ujian: {{ $hasil }}</strong>
+                                </div>
+                            </div>
                         </div>
-                    @endforeach
-                </div>
+                    </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                         Close

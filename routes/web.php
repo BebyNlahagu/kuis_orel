@@ -46,7 +46,6 @@ Route::middleware('auth','role:2')->group(function(){
     Route::get('/user/index',[HomeController::class,'index'])->name('user.index');
     Route::get('/user/kuis/index',[UjianController::class,'index'])->name('ujian');
     Route::post('/user/soal/index',[JawabanController::class,'store'])->name('jawaban.store');
-    Route::get('/online-users', [SiswaController::class, 'onlineUsers'])->name('online.users');
 });
 
 
