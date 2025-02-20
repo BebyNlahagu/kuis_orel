@@ -109,6 +109,17 @@ class SoalSeeder extends Seeder
                 'jawaban_benar' => $soal['jawaban_benar'],
                 'created_at' => now(),
                 'updated_at' => now(),
+            ],
+            [
+                'kuis_id' => 2,
+                'pertanyaan' => $soal['pertanyaan'],
+                'pilihan_a' => $soal['pilihan_a'],
+                'pilihan_b' => $soal['pilihan_b'],
+                'pilihan_c' => $soal['pilihan_c'],
+                'pilihan_d' => $soal['pilihan_d'],
+                'jawaban_benar' => $soal['jawaban_benar'],
+                'created_at' => now(),
+                'updated_at' => now(),   
             ]);
         }
     }

@@ -71,7 +71,7 @@
 @endsection
 
 @section('content')
-    <div class="container-fluid">
+    {{--  <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
                 <!-- DATA TABLE -->
@@ -161,6 +161,100 @@
                 <!-- END DATA TABLE -->
             </div>
         </div>
-    </div>
+    </div>  --}}
     <!--Modal Tambah-->
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- DATA TABLE -->
+                <h3 class="title-5 m-b-35">data table</h3>
+                <div class="table-data__tool">
+                    <div class="table-data__tool-left">
+                        <div class="rs-select2--light rs-select2--md">
+                            <select class="js-select2" name="property">
+                                <option selected="selected">All Properties</option>
+                                <option value="">Option 1</option>
+                                <option value="">Option 2</option>
+                            </select>
+                            <div class="dropDownSelect2"></div>
+                        </div>
+                        <div class="rs-select2--light rs-select2--sm">
+                            <select class="js-select2" name="time">
+                                <option selected="selected">Today</option>
+                                <option value="">3 Days</option>
+                                <option value="">1 Week</option>
+                            </select>
+                            <div class="dropDownSelect2"></div>
+                        </div>
+                        <button class="au-btn-filter">
+                            <i class="zmdi zmdi-filter-list"></i>filters</button>
+                    </div>
+                    <div class="table-data__tool-right">
+                        <button class="au-btn au-btn-icon au-btn--green au-btn--small" data-target="#tambah"
+                            data-toggle="modal"> <i class="zmdi zmdi-plus"></i>add item</button>
+                        <div class="rs-select2--dark rs-select2--sm rs-select2--dark2">
+                            <select class="js-select2" name="type">
+                                <option selected="selected">Export</option>
+                                <option value="">Option 1</option>
+                                <option value="">Option 2</option>
+                            </select>
+                            <div class="dropDownSelect2"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive m-b-40">
+                    <table class="table table-borderless table-data3">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Tanggal</th>
+                                <th>Nama Siswa</th>
+                                <th>Nilai</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @php
+                                $lastUserId = null;
+                                $userJawabanCounts = [];
+                            @endphp
+                    
+                            {{-- Hitung jumlah jawaban per siswa terlebih dahulu --}}
+                            @foreach ($jawaban as $k)
+                                @php
+                                    $userJawabanCounts[$k->user_id] = isset($userJawabanCounts[$k->user_id]) 
+                                        ? $userJawabanCounts[$k->user_id] + 1 
+                                        : 1;
+                                @endphp
+                            @endforeach
+                    
+                            @php $processedUsers = []; @endphp
+                    
+                            @foreach ($jawaban as $k)
+                                <tr>
+                                    {{-- Pastikan Nama Siswa hanya muncul sekali dengan rowspan --}}
+                                    @if (!in_array($k->user_id, $processedUsers))
+                                        <td rowspan="{{ $userJawabanCounts[$k->user_id] }}">{{ $k->user->name }}</td>
+                                        @php $processedUsers[] = $k->user_id; @endphp
+                                    @endif
+                                    
+                                    <td>{{ $k->jawaban }}</td>
+                                    <td>{{ $k->soal->pertanyaan }}</td>
+                                    <td>
+                                        @if ($k->jawaban_benar)
+                                            <span style="color: green;">Benar</span>
+                                        @else
+                                            <span style="color: red;">Salah</span>
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                <!-- END DATA TABLE -->
+            </div>
+        </div>
+    </div>
 @endsection

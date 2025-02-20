@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('soal_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('jawaban')->nullable();
+            $table->boolean('jawaban_benar')->default('false');
             $table->integer('skor');
             $table->timestamps();
         });

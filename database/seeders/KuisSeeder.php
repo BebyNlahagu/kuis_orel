@@ -17,6 +17,7 @@ class KuisSeeder extends Seeder
     {
         DB::table('kuis')->insert([
             'jenis_kuis' => 'Post Test',
+            'jenis_kuis' => 'Pre Test'
         ]);
     }
 }

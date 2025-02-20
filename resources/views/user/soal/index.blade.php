@@ -225,25 +225,25 @@
                                     <div class="form-check-inline">
                                         <input class="form-check-input custom-radio" type="radio" name="soal[{{ $soal->id }}]" id="pilihan_a_{{ $soal->id }}" value="a">
                                         <label class="form-check-label custom-bubble" for="pilihan_a_{{ $soal->id }}">
-                                            <span class="icon">A</span> {{ $soal->pilihan_a }}
+                                            <span class="icon">A. </span> {{ $soal->pilihan_a }}
                                         </label>
                                     </div>
                                     <div class="form-check-inline">
                                         <input class="form-check-input custom-radio" type="radio" name="soal[{{ $soal->id }}]" id="pilihan_b_{{ $soal->id }}" value="b">
                                         <label class="form-check-label custom-bubble" for="pilihan_b_{{ $soal->id }}">
-                                            <span class="icon">B</span> {{ $soal->pilihan_b }}
+                                            <span class="icon">B. </span> {{ $soal->pilihan_b }}
                                         </label>
                                     </div>
                                     <div class="form-check-inline">
                                         <input class="form-check-input custom-radio" type="radio" name="soal[{{ $soal->id }}]" id="pilihan_c_{{ $soal->id }}" value="c">
                                         <label class="form-check-label custom-bubble" for="pilihan_c_{{ $soal->id }}">
-                                            <span class="icon">C</span> {{ $soal->pilihan_c }}
+                                            <span class="icon">C. </span> {{ $soal->pilihan_c }}
                                         </label>
                                     </div>
                                     <div class="form-check-inline">
                                         <input class="form-check-input custom-radio" type="radio" name="soal[{{ $soal->id }}]" id="pilihan_d_{{ $soal->id }}" value="d">
                                         <label class="form-check-label custom-bubble" for="pilihan_d_{{ $soal->id }}">
-                                            <span class="icon">D</span> {{ $soal->pilihan_d }}
+                                            <span class="icon">D. </span> {{ $soal->pilihan_d }}
                                         </label>
                                     </div>
                                 </div>

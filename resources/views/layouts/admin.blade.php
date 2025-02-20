@@ -72,7 +72,7 @@
                                 <i class="far fa-check-square"></i>Manajemen Nilai</a>
                         </li>
                         <li>
-                            <a href="calendar.html">
+                            <a href="{{ route('admin.rangking') }}">
                                 <i class="fas fa-calendar-alt"></i>Statistik Probability</a>
                         </li>
                         <li>
@@ -106,7 +106,7 @@
                             <a href="{{ route('nilai.index') }}"> <i class="far fa-check-square"></i>Manajemen Nilai</a>
                         </li>
                         <li>
-                            <a href="calendar.html"> <i class="fas fa-calendar-alt"></i>Statistik Propability</a>
+                            <a href="{{ route('admin.rangking') }}"> <i class="fas fa-calendar-alt"></i>Statistik Propability</a>
                         </li>
                         <li>
                             <a href="{{ route('siswa.index') }}"><i class="fas fa-map-marker-alt"></i>Manejemen Siswa</a>
@@ -160,12 +160,14 @@
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__footer">
-                                                <div class="account-dropdown__footer">
-                                                    <form action="{{ route('logout') }}" method="POST">
-                                                        @csrf
-                                                        <button type="submit"><i class="zmdi zmdi-power"></i>Logout</button>
-                                                    </form>
+                                                <div class="account-dropdown__item">
+                                                    <a href="{{ route('logout') }}"onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                                        <i class="zmdi zmdi-power"></i>Logout
+                                                    </a>
                                                 </div>
+                                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                    @csrf
+                                                </form>
                                             </div>
                                         </div>
                                     </div>

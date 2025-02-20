@@ -7,6 +7,8 @@ use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\SoalController;
+use App\Http\Controllers\RangkingController;
+use App\Http\Controllers\UjianController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +34,10 @@ Route::get('/landing/tips',[LandingPageController::class,'caraBermain'])->name('
 
 Route::middleware('auth','role:1')->group(function(){
     Route::get('/admin/index',[HomeController::class,'index'])->name('admin.index');
+    Route::get('/admin/rangking',[RangkingController::class, 'index'])->name('admin.rangking');
+
+    //Export jawaban
+    Route::get('/admin/export',[JawabanController::class, 'export'])->name('admin.export');
 
     Route::resource('/admin/kuis',KuisController::class);
     Route::resource('/admin/soal',SoalController::class);
@@ -43,7 +49,7 @@ Route::middleware('auth','role:2')->group(function(){
     Route::resource('/user/profil',ProfileController::class);
     Route::get('/user/soal/index',[SoalController::class, 'index'])->name('user.soal');
     Route::get('/user/index',[HomeController::class,'index'])->name('user.index');
-    Route::get('/user/kuis/index',[KuisController::class,'show'])->name('kuis.show');
+    Route::get('/user/kuis/index',[UjianController::class,'index'])->name('ujian');
     Route::post('/user/soal/index',[JawabanController::class,'store'])->name('jawaban.store');
     Route::get('/online-users', [SiswaController::class, 'onlineUsers'])->name('online.users');
 });
