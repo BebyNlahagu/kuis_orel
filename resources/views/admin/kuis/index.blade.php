@@ -73,7 +73,7 @@
                     </div>
                 </div>
                 <div class="table-responsive m-b-40">
-                    <table class="table table-borderless table-data3">
+                    <table class="table table-borderless data-table table-data3">
                         <thead>
                             <tr>
                                 <th>No</th>

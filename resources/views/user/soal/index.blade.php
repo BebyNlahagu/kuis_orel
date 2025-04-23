@@ -222,6 +222,9 @@
                                 @foreach ($soal as $index => $soal)
                                 <div class="question" id="question-{{ $soal->id }}" style="display: {{ $index == 0 ? 'block' : 'none' }}" data-correct-answer="{{ $soal->jawaban_benar }}">
                                     <p class="question-text"><strong>{{ $soal->pertanyaan }}</strong></p>
+                                    
+                                    <img src="{{ Storage::url('images/'.$soal->image ?? null) }}" alt="Gambar Soal" height="80" width="130">
+                               
                                     <div class="form-check-inline">
                                         <input class="form-check-input custom-radio" type="radio" name="soal[{{ $soal->id }}]" id="pilihan_a_{{ $soal->id }}" value="a">
                                         <label class="form-check-label custom-bubble" for="pilihan_a_{{ $soal->id }}">

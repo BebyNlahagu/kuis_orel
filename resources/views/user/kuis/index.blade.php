@@ -2,24 +2,60 @@
 @section('title', 'Jenis Kuis')
 @section('main')
 <main class="container mb-4">
-    @foreach ($kuis as $id)
-    <h2>{{ $id->jenis_kuis }}</h2>
+    <h2>Kuis dan Materi</h2>
     <p class="text-muted mb-4">Silahkan Mulai kuis Di bawah Ini dengan menekan mulai</p>
-    <div class="row justify-content-center align-items-center">
-        <div class="col-md-4">
-            <div class="card text-center p-3">
-                <img src="{{ asset('landing/exam.png') }}" class="card-img-top mx-auto" alt="Tryout" style="width: 100px;">
-                <div class="card-body">
-                    <h5 class="card-title">{{ $id->jenis_kuis }}</h5>
-                    <a href="{{ route('user.soal', $id->id) }}" class="text-decoration-none btn btn-primary" id="startQuiz" data-id="{{ $id->id }}">Kejakan</a>
-                    <button type="button" class="btn btn-info " data-bs-toggle="modal" data-bs-target="#modalId">
-                        Lihat Skor
-                    </button>
+    <div class="row">
+        <div class="d-flex flex-wrap gap-3 justify-content-center">
+            @foreach ($kuis as $id)
+                <div class="card col-md-6 text-center p-3 mb-3" style="width: 18rem;">
+                    <img src="{{ asset('landing/exam.png') }}" class="card-img-top mx-auto" alt="Tryout" style="width: 100px;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $id->jenis_kuis }}</h5>
+                        <a href="{{ route('user.soal', $id->id) }}" data-jenis="{{ strtolower($id->jenis_kuis) }}" class="text-decoration-none btn btn-primary mb-3 kerjakan-btn" 
+                            id="kerjakan-{{ $id->id }}" style="pointer-events: none; opacity: 0.5;">Kerjakan
+                         </a>
+                        <button type="button" class="btn btn-info mb-3" data-bs-toggle="modal" data-bs-target="#modalId">Lihat Skor</button>
+                        @if (strtolower($id->jenis_kuis) === 'post test')
+                            <a href="{{ route('materi.siswa') }}" class="btn btn-warning white">Lihat materi</a>
+                        @endif
+                    </div>
                 </div>
-            </div>
-        </div>
+            @endforeach
+        </div>        
     </div>
-    @endforeach
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".kerjakan-btn").each(function () {
+                let jenisKuis = $(this).data("jenis");
+
+                // Jika kuisnya pre test, tombol selalu aktif
+                if (jenisKuis === "pre test") {
+                    $(this).css("pointer-events", "auto").css("opacity", "1");
+                }
+                // Jika kuisnya post test, cek apakah materi sudah dilihat
+                else if (localStorage.getItem("materi_dilihat")) {
+                    $(this).css("pointer-events", "auto").css("opacity", "1");
+                }
+            });
+
+            // Jika user klik tombol "Lihat materi", aktifkan tombol "Kerjakan" untuk post test
+            $(".btn-warning.white").click(function () {
+                localStorage.setItem("materi_dilihat", "true");
+                $(".kerjakan-btn[data-jenis='post test']").css("pointer-events", "auto").css("opacity", "1");
+            });
+
+            // Jika user klik tombol "Kerjakan", hapus status untuk mengunci kembali setelah masuk ke soal
+            $(".kerjakan-btn").click(function () {
+                let jenisKuis = $(this).data("jenis");
+                if (jenisKuis === "post test") {
+                    localStorage.removeItem("materi_dilihat");
+                }
+            });
+        });
+    </script>
+
 </main>
 
 <div class="modal fade" id="modalId" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
@@ -27,17 +63,16 @@
         <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
             <div class="modal-content">
                 <div class="modal-body">
-
-                    @foreach ($jawaban as $items)
-                        <div class="user-skor" data-skor="{{ $items->sum('skor') }}">
-                            @if ($items->count() > 0)
-                                <p> Skor Kau: <span class="skor-value">{{ $items->sum('skor') }}</span></p>
-                            @else
-                                <p> Anda belum mengerjakan soal. </p>
-                            @endif
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h2>Kuis</h2>
+                                <div class="mt-3">
+                                    <strong>Jumlah Total: {{ $hasil }}</strong>
+                                </div>
+                            </div>
                         </div>
-                    @endforeach
-                </div>
+                    </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                         Close
@@ -79,4 +114,5 @@
         });
     });
 </script>
+
 @endsection

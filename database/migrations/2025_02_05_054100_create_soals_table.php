@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('soals', function (Blueprint $table) {
             $table->id();
             $table->foreignId('kuis_id')->constrained()->onDelete('cascade');
+            $table->string("image");
             $table->string('pertanyaan');
             $table->string('pilihan_a');
             $table->string('pilihan_b');

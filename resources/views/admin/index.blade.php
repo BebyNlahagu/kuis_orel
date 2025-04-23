@@ -5,7 +5,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="overview-wrap">
-            <h2 class="title-1">overview</h2>
+            <h2 class="title-1">Jumlah Siswa</h2>
         </div>
     </div>
 </div>
@@ -19,7 +19,7 @@
                     </div>
                     <div class="text">
                         <h2></h2>
-                        <span>members online</span>
+                        <span>{{ $siswa }}</span>
                     </div>
                 </div>
                 <div class="overview-chart">
@@ -28,7 +28,7 @@
             </div>
         </div>
     </div>
-    <div class="col-sm-6 col-lg-3">
+    {{-- <div class="col-sm-6 col-lg-3">
         <div class="overview-item overview-item--c4">
             <div class="overview__inner">
                 <div class="overview-box clearfix">
@@ -45,9 +45,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 </div>
-<div class="row">
+{{-- <div class="row">
     <div class="col-lg-6">
         <div class="au-card recent-report">
             <div class="au-card-inner">
@@ -108,14 +108,14 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 
-<div class="row">
+{{-- <div class="row">
     <div class="col-md-12">
         <div class="copyright">
             <p>Copyright © 2025. All rights reserved.</p>
         </div>
     </div>
-</div>
+</div> --}}
 
 @endsection

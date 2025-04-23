@@ -53,6 +53,10 @@
                                 <option value="d">D</option>
                             </select>
                         </div>
+                        <div class="form-group">
+                            <label for="image">Pilihan B </label>
+                            <input type="file" name="image" id="image" class="form-control">
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
@@ -134,6 +138,10 @@
                                     </option>
                                 </select>
                             </div>
+                            <div class="form-group">
+                                <label for="image">image </label>
+                                <input type="file" name="image" id="image" class="form-control">
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
@@ -160,13 +168,14 @@
                         </div>
                     </div>
                     <div class="table-responsive m-b-40">
-                        <table class="table table-borderless table-data3">
+                        <table class="table table-borderless data-table table-data3">
                             <thead>
                                 <tr>
                                     <th>No</th>
                                     <th>Pertanyaan</th>
                                     <th>Jawaban Benar</th>
                                     <th>Aksi</th>
+                                    <th>Tambahkan Gambar</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -179,6 +188,15 @@
                                             <td>{{ $no++ }}</td>
                                             <td>{{ $s->pertanyaan }}</td>
                                             <td>{{ $s->jawaban_benar }}</td>
+                                    
+                                            <td>
+                                                @if ($s->image)
+                                                <img src="{{ Storage::url('images/'.$s->image) }}" alt="Gambar" width="50" height="50">
+                                    
+
+                                                @endif
+                                            </td>
+                                            
                                             <td>
                                                 <div class="table-data-feature">
                                                     <a href="{{ route('soal.edit', $s->id) }}" class="item"
@@ -191,6 +209,8 @@
                                                         @csrf
                                                         <button class="item" data-toggle="tooltip" data-placement="top"
                                                             title="Delete"> <i class="zmdi zmdi-delete"></i>
+                                                           
+
                                                         </button>
                                                     </form>
                                                 </div>

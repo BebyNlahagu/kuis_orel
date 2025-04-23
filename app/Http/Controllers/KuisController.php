@@ -10,7 +10,7 @@ class KuisController extends Controller
 {
     public function index()
     {
-        $kuis = Kuis::all();
+        $kuis = Kuis::orderBy('created_at','asc')->get();
 
         return view('admin.kuis.index',compact('kuis'));
     }

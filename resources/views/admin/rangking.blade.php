@@ -4,12 +4,9 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <div class="card">
-                    <h2>Halo</h2>
-                    <a href="{{ route('admin.export') }}">Execel</a>
-                </div>
+                <h3 class="title-5 m-b-35">data table</h3>
                 <div class="table-responsive m-b-40">
-                    <table class="table table-borderless table-data3">
+                    <table class="table table-borderless data-table table-data3">
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -21,7 +18,7 @@
                             @foreach ($siswa as $u)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $u->user->name }}</td>
+                                    <td>{{ $u->user->name}}</td>
                                     <td style="text-align: center">{{ $u->total_skor }}</td>
                                 </tr>
                             @endforeach

@@ -18,6 +18,6 @@ class UjianController extends Controller
         $total = $jawaban->sum('skor');
 
         $hasil = $total;
-        return view('user.kuis.index', compact('kuis','jawaban'));
+        return view('user.kuis.index', compact('kuis','jawaban','hasil'));
     }
 }

@@ -16,13 +16,13 @@
     <div class="row">
         <div class="col-md-12">
             <div class="table-responsive m-b-40">
-                <table class="table table-borderless table-data3">
+                <table class="table table-borderless data-table table-data3">
                     <thead>
                         <tr>
                             <th>No</th>
                             <th>Nama</th>
                             <th>email</th>
-                            <th>status</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
