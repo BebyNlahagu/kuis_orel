@@ -66,9 +66,15 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">
+<<<<<<< HEAD
                                 <h2>Kuis</h2>
                                 <div class="mt-3">
                                     <strong>Jumlah Total: {{ $hasil }}</strong>
+=======
+                                <h2>Skor</h2>
+                                <div class="mt-3">
+                                    <strong>Jumlah Nilai Ujian: {{ $hasil }}</strong>
+>>>>>>> e05cf1fbb2566edc3675e854fd7db4ceacf91132
                                 </div>
                             </div>
                         </div>

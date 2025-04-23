@@ -10,7 +10,10 @@ use App\Http\Controllers\ProfileAdminController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\SoalController;
+<<<<<<< HEAD
 use App\Http\Controllers\RangkingController;
+=======
+>>>>>>> e05cf1fbb2566edc3675e854fd7db4ceacf91132
 use App\Http\Controllers\UjianController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -60,7 +63,10 @@ Route::middleware('auth','role:2')->group(function(){
     Route::get('/user/index',[HomeController::class,'index'])->name('user.index');
     Route::get('/user/kuis/index',[UjianController::class,'index'])->name('ujian');
     Route::post('/user/soal/index',[JawabanController::class,'store'])->name('jawaban.store');
+<<<<<<< HEAD
     Route::get('/user/materi/index/',[MateriSiswa::class, 'index'])->name('materi.siswa');
+=======
+>>>>>>> e05cf1fbb2566edc3675e854fd7db4ceacf91132
 });
 
 

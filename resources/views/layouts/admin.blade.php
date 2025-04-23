@@ -132,8 +132,8 @@
             <header class="header-desktop">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
-                        <div class="header-wrap ms-auto justify-content-end">
-                            {{-- <form class="form-header" action="" method="POST">
+                        <div class="header-wrap">
+                            <form class="form-header" action="" method="POST">
                                 <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
                                 <button class="au-btn--submit" type="submit">
                                     <i class="zmdi zmdi-search"></i>
@@ -168,15 +168,19 @@
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__footer">
-                                                <div class="account-dropdown__item">
-                                                    <a href="{{ route('logout') }}"onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                                                        <i class="zmdi zmdi-power"></i>Logout
-                                                    </a>
+                                                <div class="account-dropdown__footer">
+                                                    <form action="{{ route('logout') }}" method="POST">
+                                                        @csrf
+                                                        <button type="submit"><i class="zmdi zmdi-power"></i>Logout</button>
+                                                    </form>
                                                 </div>
                                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                                     @csrf
                                                 </form>
                                             </div>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                @csrf
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
